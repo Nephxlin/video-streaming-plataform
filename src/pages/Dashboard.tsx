@@ -1,21 +1,20 @@
 import { type NextPage } from "next";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
+import {
+  DeleteButton,
+  EditButton,
+  PublishedButton,
+  UploadButton,
+} from "~/Components/Buttons/Buttons";
+import { GreenEye, GreenHeart, GreenUserCheck } from "~/Components/Icons/Icons";
+import { api } from "~/utils/api";
 import {
   ErrorMessage,
   Layout,
   LoadingMessage,
   Thumbnail,
 } from "../Components/Components";
-import { useSession } from "next-auth/react";
-import {
-  DeleteButton,
-  PublishedButton,
-  UploadButton,
-  EditButton,
-} from "~/Components/Buttons/Buttons";
-import { api } from "~/utils/api";
-import { GreenEye, GreenUserCheck, GreenHeart } from "~/Components/Icons/Icons";
-import React from "react";
 const Dashboard: NextPage = () => {
   const { data: sessionData } = useSession();
 
@@ -156,7 +155,7 @@ const Dashboard: NextPage = () => {
                                 <div className="flex">
                                   <div className="h-16 w-16 flex-shrink-0">
                                     <Thumbnail
-                                      thumbnailUrl={video.thumbnailUrl}
+                                      thumbnailUrl={video.thumbnailUrl || ''}
                                     />
                                   </div>
                                   <div className="ml-4 font-medium text-gray-900">
