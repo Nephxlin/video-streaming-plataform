@@ -1,29 +1,29 @@
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import ReactPlayer from "react-player";
 import { api } from "~/utils/api";
 
-import Link from "next/link";
 import { type NextPage } from "next";
+import { useSession } from "next-auth/react";
+import Head from "next/head";
+import Link from "next/link";
 import {
   FollowButton,
   LikeDislikeButton,
   SaveButton,
 } from "~/Components/Buttons/Buttons";
 import {
-  Description,
-  SmallSingleColumnVideo,
   CommentSection,
-  Layout,
+  Description,
   ErrorMessage,
+  Layout,
   LoadingMessage,
-  VideoTitle,
-  VideoInfo,
+  SmallSingleColumnVideo,
   UserImage,
   UserName,
+  VideoInfo,
+  VideoTitle,
 } from "~/Components/Components";
-import { useSession } from "next-auth/react";
-import Head from "next/head";
 
 const VideoPage: NextPage = () => {
   const router = useRouter();
@@ -122,7 +122,7 @@ const VideoPage: NextPage = () => {
                   <div className="min-w-0 flex-1 space-y-3 ">
                     <div className="xs:flex-wrap flex flex-row justify-between gap-4 max-md:flex-wrap">
                       <div className="flex flex-col items-start justify-center gap-1 self-stretch ">
-                        <VideoTitle title={video.title} />
+                        <VideoTitle title={video.title || '-no title'} />
                         <VideoInfo
                           views={video.views}
                           createdAt={video.createdAt}
